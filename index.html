@@ -3,173 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的個人網站 | Portfolio</title>
+    <title>【應徵職務名稱】履歷 - [你的名字]</title>
     <style>
-        /* 基礎樣式設定 */
+        /* 專業履歷風格 CSS */
+        :root {
+            --primary-color: #2c3e50; /* 深藍灰色，顯得穩重 */
+            --accent-color: #27ae60;  /* 專業的綠色，用於強調 */
+            --text-color: #333;
+            --bg-color: #fff;
+            --section-bg: #f9f9f9;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif;
+            line-height: 1.8;
             margin: 0;
             padding: 0;
-            color: #333;
-            background-color: #f4f4f4;
-        }
-        
-        /* 導覽列 */
-        nav {
-            background: #333;
-            color: #fff;
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            text-align: center;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-        nav a:hover {
-            color: #4CAF50;
+            color: var(--text-color);
+            background-color: #e0e0e0; /* 網頁背景，突顯中央履歷 */
         }
 
-        /* 區塊共用設定 */
-        section {
-            padding: 60px 20px;
-            max-width: 900px;
-            margin: auto;
+        /* 履歷容器，模擬紙本感 */
+        .resume-container {
+            max-width: 850px;
+            margin: 40px auto;
+            background: var(--bg-color);
+            padding: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-radius: 4px;
         }
-        section h2 {
+
+        /* 頁首：名字與聯絡資訊 */
+        header {
             text-align: center;
-            border-bottom: 2px solid #4CAF50;
-            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 20px;
             margin-bottom: 30px;
         }
-
-        /* 首頁區塊 */
-        #home {
-            background: #fff;
-            text-align: center;
-            padding: 100px 20px;
-            margin-top: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        #home h1 {
+        header h1 {
+            margin: 0;
             font-size: 2.5rem;
+            color: var(--primary-color);
+            letter-spacing: 2px;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+        .contact-info {
+            font-size: 0.95rem;
+            color: #666;
+        }
+        .contact-info a {
+            color: #666;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .contact-info a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        /* 通用區塊樣式 */
+        section {
+            margin-bottom: 35px;
+        }
+        h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* 教育背景與工作經歷 */
+        .entry {
+            display: flex;
+            justify-content: space-between;
             margin-bottom: 10px;
         }
-        .btn {
-            display: inline-block;
-            background: #4CAF50;
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 20px;
+        .entry-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .entry-subtitle {
+            font-style: italic;
+            color: #555;
+        }
+        .entry-date {
+            color: #777;
+            font-size: 0.95rem;
+            text-align: right;
+            min-width: 120px;
         }
 
-        /* 專案卡片排版 */
-        .grid-container {
+        /* 專業技能 */
+        .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px 30px;
         }
-        .card {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .card h3 {
-            margin-top: 0;
-            color: #4CAF50;
+        .skill-category {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-right: 10px;
         }
 
-        /* 頁尾 */
-        footer {
-            background: #333;
-            color: #fff;
-            text-align: center;
+        /* 專案作品 */
+        .project-item {
+            margin-bottom: 25px;
+            background: var(--section-bg);
             padding: 20px;
-            margin-top: 40px;
+            border-radius: 4px;
+            border: 1px solid #eee;
+        }
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .project-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+        .project-tech {
+            font-size: 0.85rem;
+            background-color: #e1f5fe;
+            color: #0277bd;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-left: 10px;
+        }
+        .project-desc ul {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 0.95rem;
+            color: #444;
+        }
+        .project-desc li {
+            margin-bottom: 5px;
+        }
+
+        /* 自我推薦信簡述 */
+        .summary p {
+            margin: 0;
+            text-align: justify;
+        }
+
+        /* 響應式與列印設定 */
+        @media (max-width: 768px) {
+            .resume-container { padding: 20px; margin: 10px; }
+            header h1 { font-size: 2rem; }
+            .skills-container { grid-template-columns: 1fr; }
+            .entry { flex-direction: column; }
+            .entry-date { text-align: left; margin-top: 5px; }
+            .project-header { flex-direction: column; align-items: flex-start; }
+            .project-tech { margin-left: 0; margin-top: 5px; display: inline-block; }
+        }
+
+        @media print {
+            body { background: #fff; }
+            .resume-container { box-shadow: none; margin: 0; padding: 20px; }
+            a { text-decoration: none !important; color: #000 !important; }
+            .project-item { page-break-inside: avoid; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="#home">首頁</a>
-        <a href="#about">關於我</a>
-        <a href="#portfolio">專案作品</a>
-        <a href="#hobbies">生活與興趣</a>
-        <a href="#contact">聯絡我</a>
-    </nav>
-
-    <section id="home">
-        <h1>你好，我是 [你的名字]</h1>
-        <p>熱愛程式開發、工程最佳化與音樂混音的創作者</p>
-        <a href="#portfolio" class="btn">觀看我的專案</a>
-    </section>
-
-    <section id="about">
-        <h2>關於我</h2>
-        <p>我專注於演算法開發與資料處理，同時也熱愛跨領域的學習與創作。從寫程式解 bug 到處理音樂音軌，我享受從無到有創造事物的過程。</p>
-        <h3>技術棧與工具</h3>
-        <ul>
-            <li><strong>程式與工程：</strong> Python, MATLAB, COMSOL, NSGA-III 演算法</li>
-            <li><strong>音樂與音訊：</strong> Cakewalk Sonar (自學混音與 Cover 製作)</li>
-            <li><strong>其他：</strong> 伺服器架設 (Oracle Cloud), Discord 機器人開發</li>
-        </ul>
-    </section>
-
-    <section id="portfolio">
-        <h2>專案作品集</h2>
-        <div class="grid-container">
-            <div class="card">
-                <h3>AEM 電解槽最佳化程式</h3>
-                <p>基於 <strong>NSGA-III</strong> 演算法開發的最佳化程式。結合 MATLAB 與 COMSOL，針對流道寬度、高度與孔隙率進行優化，目標是實現效率最大化與壓降最小化。</p>
+    <div class="resume-container">
+        <header>
+            <h1>[你的名字]</h1>
+            <div class="subtitle">應徵職務：[例如：演算法開發工程師 / Python 後端工程師]</div>
+            <div class="contact-info">
+                <span>📞 (886) 912-345-678</span> |
+                <span>📧 <a href="mailto:your.email@example.com">your.email@example.com</a></span> |
+                <span>🔗 <a href="https://github.com/你的帳號" target="_blank">GitHub</a></span> |
+                <span>🔗 <a href="[你的YouTube連結]" target="_blank">作品演示頻道</a></span>
             </div>
-            <div class="card">
-                <h3>Discord 多功能機器人</h3>
-                <p>使用 Python 開發的 Discord 機器人，包含推特遊戲活動提醒等客製化功能，持續更新與優化中。</p>
-            </div>
-            <div class="card">
-                <h3>翻唱與混音計畫</h3>
-                <p>使用 Cakewalk Sonar 進行音頻處理與混音，製作自己的 Cover 翻唱歌曲。從人聲處理到整體平衡的自學實作紀錄。</p>
-            </div>
-        </div>
-    </section>
+        </header>
 
-    <section id="hobbies">
-        <h2>生活與興趣</h2>
-        <div class="grid-container">
-            <div class="card">
-                <h3>日常休閒</h3>
-                <p>平時喜歡玩《偶像夢幻祭》(Ensemble Stars!!)，偶爾會委託或收集明星昴流等角色的周邊商品，享受遊戲內的活動與故事。</p>
-            </div>
-            <div class="card">
-                <h3>技術踩坑筆記</h3>
-                <p>喜歡研究各種免費資源與伺服器技術，例如記錄申請 Oracle Cloud Arm Ampere A1 伺服器時遇到「Out of Host Capacity」等除錯與闖關過程。</p>
-            </div>
-        </div>
-    </section>
+        <section id="summary" class="summary">
+            <h2>個人簡述 / Professional Summary</h2>
+            <p>
+                [學校名稱] [科系名稱] 應屆畢業生。專長於 **Python** 與 **MATLAB** 程式開發，擁有扎實的**演算法優化 (如 NSGA-III)** 與數據處理基礎。在校期間結合工程原理與模擬軟體 (COMSOL)，成功開發電解槽優化程式。具備強烈的自學動機，自主拓展 **Oracle Cloud 伺服器架設** 與 **Discord Bot 開發** 等實務經驗。熱愛跨領域技術整合，期許能將工程專業與程式技術應用於實際產業挑戰。
+            </p>
+        </section>
 
-    <section id="contact">
-        <h2>聯絡我</h2>
-        <p>如果你對我的專案感興趣，或者想交流技術與混音心得，歡迎透過以下方式聯絡我：</p>
-        <ul>
-            <li>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></li>
-            <li>GitHub: <a href="https://github.com/你的帳號" target="_blank">github.com/你的帳號</a></li>
-            <li>YouTube: [你的頻道連結]</li>
-        </ul>
-    </section>
+        <section id="education">
+            <h2>教育背景 / Education</h2>
+            <div class="entry">
+                <div>
+                    <div class="entry-title">[國立/私立 XX 大學] - [XX 工程/計算機科學系]</div>
+                    <div class="entry-subtitle">學士學位</div>
+                    <div class="entry-subtitle">相關課程：演算法分析、數值分析、工程最佳化、多物理量模擬</div>
+                </div>
+                <div class="entry-date">202X年 9月 - 202X年 6月<br>(預計畢業)</div>
+            </div>
+        </section>
 
-    <footer>
-        <p>&copy; 2026 [你的名字]. All rights reserved.</p>
-    </footer>
+        <section id="skills">
+            <h2>專業技能 / Skills</h2>
+            <div class="skills-container">
+                <div>
+                    <p><span class="skill-category">程式語言:</span>Python, MATLAB</p>
+                    <p><span class="skill-category">最佳化演算法:</span>NSGA-III (多目標基因演算法), 參數最佳化</p>
+                </div>
+                <div>
+                    <p><span class="skill-category">工程軟體:</span>COMSOL Multiphysics</p>
+                    <p><span class="skill-category">其他技術:</span>Git 版本控制, Discord Bot 開發 (discord.py), Linux 基本操作 (Oracle Cloud)</p>
+                    <p><span class="skill-category">音訊處理:</span>Cakewalk Sonar (自學混音技術)</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>重點專案作品 / Key Projects</h2>
+            
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-name">AEM 電解槽多目標性能最佳化程式開發<span class="project-tech">MATLAB / COMSOL / NSGA-III</span></div>
+                </div>
+                <div class="project-desc">
+                    <ul>
+                        <li>**專案目標：** 為提升 AEM 電解槽效率，針對關鍵幾何參數與物理特性進行優化。</li>
+                        <li>**實作方法：** 運用 **MATLAB** 撰寫主程式，耦合 **COMSOL Multiphysics** 進行多物理量模擬，並引入 **NSGA-III (第三代非支配排序基因演算法)**。</li>
+                        <li>**具體成果：** 成功針對流道寬度、高度及孔隙率進行最佳化，大幅縮短尋優時間，並實現了系統「效率最大化」與「壓降最小化」的折衷最佳解。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-name">Discord 技術整合與自動化機器人<span class="project-tech">Python / discord.py / Oracle Cloud / Linux</span></div>
+                </div>
+                <div class="project-desc">
+                    <ul>
+                        <li>**專案內容：** 自學 Python API 開發與雲端伺服器維護，打造社群自動化工具。</li>
+                        <li>**技術細節：** 使用 Python (**discord.py**) 開發，成功申請並於 **Oracle Cloud Arm Ampere A1** 伺服器部署（經歷失敗與除錯闖關）。整合 Twitter API 實現遊戲活動自動化提醒與互動功能。</li>
+                        <li>**收穫：** 掌握了 Linux 基本操作、伺服器環境配置、API 對接以及異步程式設計原理。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-name">音訊處理與 Cover 翻唱製作 (個人興趣技術展現)<span class="project-tech">Cakewalk Sonar / 自學</span></div>
+                </div>
+                <div class="project-desc">
+                    <ul>
+                        <li>**描述：** 為展現自學能力與對細節的追求，使用專業 DAW **Cakewalk Sonar** 自學混音與音訊處理技術。完成多首 Cover 歌曲的人聲後期處理、頻率平衡 (EQ) 與 動態控制 (Compression)。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
 
 </body>
 </html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的個人網站 | Portfolio</title>
+    <style>
+        /* 基礎樣式設定 */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        
+        /* 導覽列 */
+        nav {
+            background: #333;
+            color: #fff;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #4CAF50;
+        }
+
+        /* 區塊共用設定 */
+        section {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+        section h2 {
+            text-align: center;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        /* 首頁區塊 */
+        #home {
+            background: #fff;
+            text-align: center;
+            padding: 100px 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        #home h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .btn {
+            display: inline-block;
+            background: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        /* 專案卡片排版 */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+
+        /* 頁尾 */
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#home">首頁</a>
+        <a href="#about">關於我</a>
+        <a href="#portfolio">專案作品</a>
+        <a href="#hobbies">生活與興趣</a>
+        <a href="#contact">聯絡我</a>
+    </nav>
+
+    <section id="home">
+        <h1>你好，我是 [你的名字]</h1>
+        <p>熱愛程式開發、工程最佳化與音樂混音的創作者</p>
+        <a href="#portfolio" class="btn">觀看我的專案</a>
+    </section>
+
+    <section id="about">
+        <h2>關於我</h2>
+        <p>我專注於演算法開發與資料處理，同時也熱愛跨領域的學習與創作。從寫程式解 bug 到處理音樂音軌，我享受從無到有創造事物的過程。</p>
+        <h3>技術棧與工具</h3>
+        <ul>
+            <li><strong>程式與工程：</strong> Python, MATLAB, COMSOL, NSGA-III 演算法</li>
+            <li><strong>音樂與音訊：</strong> Cakewalk Sonar (自學混音與 Cover 製作)</li>
+            <li><strong>其他：</strong> 伺服器架設 (Oracle Cloud), Discord 機器人開發</li>
+        </ul>
+    </section>
+
+    <section id="portfolio">
+        <h2>專案作品集</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>AEM 電解槽最佳化程式</h3>
+                <p>基於 <strong>NSGA-III</strong> 演算法開發的最佳化程式。結合 MATLAB 與 COMSOL，針對流道寬度、高度與孔隙率進行優化，目標是實現效率最大化與壓降最小化。</p>
+            </div>
+            <div class="card">
+                <h3>Discord 多功能機器人</h3>
+                <p>使用 Python 開發的 Discord 機器人，包含推特遊戲活動提醒等客製化功能，持續更新與優化中。</p>
+            </div>
+            <div class="card">
+                <h3>翻唱與混音計畫</h3>
+                <p>使用 Cakewalk Sonar 進行音頻處理與混音，製作自己的 Cover 翻唱歌曲。從人聲處理到整體平衡的自學實作紀錄。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="hobbies">
+        <h2>生活與興趣</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>日常休閒</h3>
+                <p>平時喜歡玩《偶像夢幻祭》(Ensemble Stars!!)，偶爾會委託或收集明星昴流等角色的周邊商品，享受遊戲內的活動與故事。</p>
+            </div>
+            <div class="card">
+                <h3>技術踩坑筆記</h3>
+                <p>喜歡研究各種免費資源與伺服器技術，例如記錄申請 Oracle Cloud Arm Ampere A1 伺服器時遇到「Out of Host Capacity」等除錯與闖關過程。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>聯絡我</h2>
+        <p>如果你對我的專案感興趣，或者想交流技術與混音心得，歡迎透過以下方式聯絡我：</p>
+        <ul>
+            <li>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></li>
+            <li>GitHub: <a href="https://github.com/你的帳號" target="_blank">github.com/你的帳號</a></li>
+            <li>YouTube: [你的頻道連結]</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 [你的名字]. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

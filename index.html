@@ -23,6 +23,19 @@
             background-color: #e0e0e0; /* 網頁背景，突顯中央履歷 */
         }
 
+        /* --- 動畫定義區 --- */
+        /* 履歷進場動畫 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         /* 履歷容器，模擬紙本感 */
         .resume-container {
             max-width: 850px;
@@ -31,6 +44,8 @@
             padding: 50px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             border-radius: 4px;
+            /* 套用進場動畫：耗時 0.8 秒，平滑進場 */
+            animation: fadeInUp 0.8s ease-out forwards;
         }
 
         /* 頁首：名字與聯絡資訊 (左右排版) */
@@ -67,11 +82,11 @@
         .contact-info a {
             color: #666;
             text-decoration: none;
+            transition: color 0.3s ease; /* 聯絡資訊變色過渡動畫 */
         }
         
         .contact-info a:hover {
             color: var(--accent-color);
-            text-decoration: underline;
         }
 
         /* 大頭貼樣式微調 */
@@ -84,6 +99,12 @@
             object-fit: cover;
             aspect-ratio: 1/1;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* 加一點淡淡的陰影增加立體感 */
+            transition: transform 0.4s ease; /* 大頭貼放大過渡動畫 */
+        }
+
+        /* 滑鼠停在大頭貼上的微放大效果 */
+        .profile-img-container img:hover {
+            transform: scale(1.05);
         }
 
         /* 通用區塊樣式 */
@@ -132,6 +153,14 @@
             color: var(--primary-color);
             margin-right: 10px;
         }
+        
+        /* 技能文字停駐時微微右移動畫 */
+        .skills-container p {
+            transition: transform 0.3s ease;
+        }
+        .skills-container p:hover {
+            transform: translateX(10px);
+        }
 
         /* 專案作品 */
         .project-item {
@@ -140,7 +169,16 @@
             padding: 20px;
             border-radius: 4px;
             border: 1px solid #eee;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* 專案卡片浮動動畫 */
         }
+        
+        /* 滑鼠停在專案卡片上的浮起效果 */
+        .project-item:hover {
+            transform: translateY(-5px); /* 往上浮動 5px */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12); /* 增加陰影產生立體感 */
+            border-color: #ddd;
+        }
+
         .project-header {
             display: flex;
             justify-content: space-between;
@@ -181,6 +219,18 @@
             text-align: right;
             font-weight: bold;
         }
+        .journal-link a {
+            display: inline-block;
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: transform 0.2s ease, filter 0.2s ease; /* 連結互動動畫 */
+        }
+        
+        /* 期刊連結停駐時放大 */
+        .journal-link a:hover {
+            transform: scale(1.05);
+            filter: brightness(1.2);
+        }
 
         /* 響應式與列印設定 */
         @media (max-width: 768px) {
@@ -202,13 +252,17 @@
             .entry-date { text-align: left; margin-top: 5px; }
             .project-header { flex-direction: column; align-items: flex-start; }
             .project-tech { margin-left: 0; margin-top: 5px; display: inline-block; }
+            
+            /* 手機板關閉技能右移效果，避免誤觸 */
+            .skills-container p:hover { transform: none; }
         }
 
         @media print {
             body { background: #fff; }
-            .resume-container { box-shadow: none; margin: 0; padding: 20px; }
+            /* 列印時關閉所有動畫與陰影 */
+            .resume-container { box-shadow: none; margin: 0; padding: 20px; animation: none; } 
             a { text-decoration: none !important; color: #000 !important; }
-            .project-item { page-break-inside: avoid; }
+            .project-item { page-break-inside: avoid; transition: none; transform: none; box-shadow: none; border: 1px solid #ccc; }
         }
     </style>
 </head>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> 自我介紹 - 吳翊瑋</title>
+    <title>自我介紹 - 吳翊瑋</title>
     <style>
         /* 專業履歷風格 CSS */
         :root {
@@ -33,19 +33,24 @@
             border-radius: 4px;
         }
 
-        /* 頁首：名字與聯絡資訊 */
+        /* 頁首：名字與聯絡資訊 (左右排版) */
         header {
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
             border-bottom: 2px solid var(--primary-color);
             padding-bottom: 20px;
             margin-bottom: 30px;
         }
+        
         header h1 {
             margin: 0;
             font-size: 2.5rem;
             color: var(--primary-color);
             letter-spacing: 2px;
         }
+        
         .subtitle {
             font-size: 1.1rem;
             color: var(--accent-color);
@@ -53,18 +58,32 @@
             margin-top: 5px;
             margin-bottom: 15px;
         }
+        
         .contact-info {
             font-size: 0.95rem;
             color: #666;
         }
+        
         .contact-info a {
             color: #666;
             text-decoration: none;
-            margin: 0 10px;
         }
+        
         .contact-info a:hover {
             color: var(--accent-color);
             text-decoration: underline;
+        }
+
+        /* 大頭貼樣式微調 */
+        .profile-img-container {
+            flex-shrink: 0; /* 避免圖片被壓縮 */
+            margin-left: 20px;
+        }
+        .profile-img-container img {
+            border-radius: 50%;
+            object-fit: cover;
+            aspect-ratio: 1/1;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* 加一點淡淡的陰影增加立體感 */
         }
 
         /* 通用區塊樣式 */
@@ -153,13 +172,30 @@
 
         /* 自我推薦信簡述 */
         .summary p {
-            margin: 0;
+            margin: 0 0 15px 0;
             text-align: justify;
+        }
+
+        /* 期刊連結靠右 */
+        .journal-link {
+            text-align: right;
+            font-weight: bold;
         }
 
         /* 響應式與列印設定 */
         @media (max-width: 768px) {
             .resume-container { padding: 20px; margin: 10px; }
+            
+            /* 手機版頁首改為直式排版 */
+            header {
+                flex-direction: column-reverse; /* 讓圖片在上，文字在下 */
+                text-align: center;
+            }
+            .profile-img-container {
+                margin-left: 0;
+                margin-bottom: 20px;
+            }
+            
             header h1 { font-size: 2rem; }
             .skills-container { grid-template-columns: 1fr; }
             .entry { flex-direction: column; }
@@ -180,23 +216,29 @@
 
     <div class="resume-container">
         <header>
-            <h1>吳翊瑋</h1>
-            <div class="subtitle">目前就讀國立勤益科技大學 智慧自動化工程系三年級</div>
-            <div class="contact-info">
-                <span>📞 (886) 983-071-320</span> |
-                <span>📧 <a href="mailto:your.email@example.com">wei80694@gmail.com</a></span> |
+            <div>
+                <h1>吳翊瑋</h1>
+                <div class="subtitle">目前就讀國立勤益科技大學 智慧自動化工程系三年級</div>
+                <div class="contact-info">
+                    <span>📞 (886) 983-071-320</span> |
+                    <span>📧 <a href="mailto:wei80694@gmail.com">wei80694@gmail.com</a></span>
+                </div>
+            </div>
+            
+            <div class="profile-img-container">
+                <img src="profile.jpg" width="130" alt="吳翊瑋的大頭貼">
             </div>
         </header>
 
         <section id="summary" class="summary">
             <h2>個人簡述 / Professional Summary</h2>
-                </p>你好！我是翊瑋，目前就讀勤益科大智動系三年級，在學期間成績也不算太優異，水平大概在中等偏下。</p>
+                <p>你好！我是翊瑋，目前就讀勤益科大智動系三年級，在學期間成績也不算太優異，水平大概在中等偏下。</p>
                 <br>
-                </p>簡單介紹一下我在學期間的特殊表現，在大二時曾協助教授撰寫了一篇SCI期刊，雖說只是將教授的研究成果統合起來寫成一篇期刊，但從中也學習到氫能相關的知識。</p>
+                <p>簡單介紹一下我在學期間的特殊表現，在大二時曾協助教授撰寫了一篇SCI期刊，雖說只是將教授的研究成果統合起來寫成一篇期刊，但從中也學習到氫能相關的知識。</p>
                 <br>
-                </p>最後在大三時，我決定以氫能為主題去做我的專題，在專題中，我的身份主要是最佳化程式與實驗相關，未來若有機會也將會投出一篇國際研討會期刊。</p>
+                <p>最後在大三時，我決定以氫能為主題去做我的專題，在專題中，我的身份主要是最佳化程式與實驗相關，未來若有機會也將會投出一篇國際研討會期刊。</p>
                 <br>
-                </p><a href="https://scijournals.onlinelibrary.wiley.com/doi/full/10.1002/ese3.70173">期刊連結</a></p>
+                <p class="journal-link"><a href="https://scijournals.onlinelibrary.wiley.com/doi/full/10.1002/ese3.70173" target="_blank">📄 前往觀看期刊</a></p>
         </section>
 
         <section id="education">
